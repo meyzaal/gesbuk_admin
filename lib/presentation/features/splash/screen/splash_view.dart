@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../configs/routes/routes.dart';
 import '../cubit/splash_cubit.dart';
 
 class SplashView extends StatelessWidget {
@@ -21,10 +23,10 @@ class SplashView extends StatelessWidget {
           }
 
           if (state.isUserLoggedIn == false) {
-            // context.router.pushAndPopUntil(
-            //   const LoginRoute(),
-            //   predicate: (_) => false,
-            // );
+            context.router.pushAndPopUntil(
+              const LoginRoute(),
+              predicate: (_) => false,
+            );
           }
         },
         builder: (context, state) {
