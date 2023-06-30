@@ -1,0 +1,142 @@
+{
+  "project_info": {
+    "project_number": "387202563418",
+    "project_id": "gesbuk-58f74",
+    "storage_bucket": "gesbuk-58f74.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387202563418:android:0c4d5d132a9d6e40ed8763",
+        "android_client_info": {
+          "package_name": "com.example.flutter_gesbuk_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387202563418-5tfg08dkt7efbu6t783074r9io9u6dma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_gesbuk_user",
+            "certificate_hash": "4f38a1d3db6a0194c42056b24cbe0ec88a5b1a63"
+          }
+        },
+        {
+          "client_id": "387202563418-icgfplqlpnsvshgptjua21mel421529f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6boW3_p-wkrjUvCOFuk5W47_MastSPqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387202563418-icgfplqlpnsvshgptjua21mel421529f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "387202563418-6ggc7p2vkemqlmnpjftaoocmntpapq2l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gesbukUser"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387202563418:android:016a349f80912ee3ed8763",
+        "android_client_info": {
+          "package_name": "com.gesbuk.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387202563418-pfes77sfi4f09v5oc2isnsd1c4m623u9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gesbuk.admin",
+            "certificate_hash": "4f38a1d3db6a0194c42056b24cbe0ec88a5b1a63"
+          }
+        },
+        {
+          "client_id": "387202563418-icgfplqlpnsvshgptjua21mel421529f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6boW3_p-wkrjUvCOFuk5W47_MastSPqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387202563418-icgfplqlpnsvshgptjua21mel421529f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "387202563418-6ggc7p2vkemqlmnpjftaoocmntpapq2l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gesbukUser"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387202563418:android:3efda3124aef3275ed8763",
+        "android_client_info": {
+          "package_name": "com.gesbuk.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387202563418-ha8o7cveehfdsvll0i6oqfmi75vgumfq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gesbuk.user",
+            "certificate_hash": "4f38a1d3db6a0194c42056b24cbe0ec88a5b1a63"
+          }
+        },
+        {
+          "client_id": "387202563418-icgfplqlpnsvshgptjua21mel421529f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6boW3_p-wkrjUvCOFuk5W47_MastSPqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387202563418-icgfplqlpnsvshgptjua21mel421529f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "387202563418-6ggc7p2vkemqlmnpjftaoocmntpapq2l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gesbukUser"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
