@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/widgets/widgets.dart';
 import '../../../commons/controllers/password_cubit.dart';
+import '../bloc/login_bloc.dart';
 
 class LoginPasswordInput extends StatelessWidget {
   const LoginPasswordInput({
@@ -11,12 +12,14 @@ class LoginPasswordInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PasswordCubit, bool>(
-      builder: (context, showPassword) {
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        final showPassword = context.watch<PasswordCubit>().state;
+
         return GesbukTextField(
           labelText: 'Password',
           hintText: 'Enter your password',
-          errorText: null,
+          errorText: state.password.isPure ? null : state.password.error,
           obscureText: showPassword,
           prefixIcon: const Icon(Icons.password_rounded),
           suffixIcon: Focus(
@@ -31,6 +34,9 @@ class LoginPasswordInput extends StatelessWidget {
           ),
           textInputAction: TextInputAction.done,
           keyboardType: TextInputType.visiblePassword,
+          onChanged: (value) => context
+              .read<LoginBloc>()
+              .add(LoginEvent.passwordChangedEvent(value)),
         );
       },
     );

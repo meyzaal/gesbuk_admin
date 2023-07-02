@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/login_bloc.dart';
 
 class LoginSubmitButton extends StatelessWidget {
   const LoginSubmitButton({
@@ -7,6 +10,16 @@ class LoginSubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: () {}, child: const Text('Login'));
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        return ElevatedButton(
+            onPressed: state.isValid
+                ? () => context
+                    .read<LoginBloc>()
+                    .add(const LoginEvent.submitEvent())
+                : null,
+            child: const Text('Login'));
+      },
+    );
   }
 }

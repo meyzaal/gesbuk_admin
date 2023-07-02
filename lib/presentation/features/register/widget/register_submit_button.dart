@@ -13,7 +13,11 @@ class RegisterSubmitButton extends StatelessWidget {
     return BlocBuilder<RegisterBloc, RegisterState>(
       builder: (context, state) {
         return ElevatedButton(
-            onPressed: state.isValid ? () {} : null,
+            onPressed: state.isValid
+                ? () => context
+                    .read<RegisterBloc>()
+                    .add(const RegisterEvent.submitEvent())
+                : null,
             child: const Text('Register'));
       },
     );

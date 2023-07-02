@@ -21,6 +21,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     on<EmailChangedEvent>(_onEmailChangedEvent);
     on<PasswordChangedEvent>(_onPasswordChangedEvent);
     on<VerifyPasswordChangedEvent>(_onVerifyPasswordChangedEvent);
+    on<SubmitEvent>(_onSubmitEvent);
   }
 
   void _onNameChangedEvent(
@@ -84,5 +85,12 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           state.password,
           verifyPassword,
         ])));
+  }
+
+  Future<void> _onSubmitEvent(
+    SubmitEvent event,
+    Emitter<RegisterState> emit,
+  ) async {
+    // TODO: implement event handler
   }
 }
