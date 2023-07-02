@@ -5,7 +5,7 @@ class ApiEndpoint {
 
   // Authentication
   static String get auth => '/auth';
-  static String get googleAuth => '$auth/google-validate';
+  static String get registerAdmin => '$auth/register-admin';
 
   // User
   static String get user => '/user';

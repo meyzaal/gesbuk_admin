@@ -3,6 +3,7 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../commons/models/models.dart';
+import '../../../configs/services/services.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -19,6 +20,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<PasswordChangedEvent>(_onPasswordChangedEvent);
     on<SubmitEvent>(_onSubmitEvent);
   }
+
+  final _authService = serviceLocatorInstance<PasswordAuthenticationService>();
 
   void _onEmailChangedEvent(
     EmailChangedEvent event,
@@ -50,6 +53,27 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     SubmitEvent event,
     Emitter<LoginState> emit,
   ) async {
-    // TODO: implement event handler
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
+    final result = await _authService.signIn(
+        email: state.email.value, password: state.password.value);
+
+    result.fold((failure) {
+      if (failure.message == 'email-not-verified') {
+        return emit(state.copyWith(
+            status: FormzSubmissionStatus.canceled,
+            errorMessage:
+                'Unverified email, please verify your email by clicking the verification link in your email inbox'));
+      }
+
+      return emit(state.copyWith(
+          status: FormzSubmissionStatus.failure,
+          errorMessage: failure.message));
+    },
+        (success) =>
+            emit(state.copyWith(status: FormzSubmissionStatus.success)));
+
+    return emit(state.copyWith(
+        status: FormzSubmissionStatus.initial, errorMessage: ''));
   }
 }

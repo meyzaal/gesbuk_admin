@@ -1,9 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../domain/failures/failures.dart';
 
 abstract class PasswordAuthenticationService {
-  Future<bool> signIn({required String email, required String password});
+  Future<Either<LogInWithEmailAndPasswordFailure, bool>> signIn(
+      {required String email, required String password});
   Future<bool> signOut();
   Future<void> sendEmailVerification();
   Future<String?> getIdToken();
@@ -16,7 +18,8 @@ class PasswordAuthenticationServiceImpl extends PasswordAuthenticationService {
   User? _user;
 
   @override
-  Future<bool> signIn({required String email, required String password}) async {
+  Future<Either<LogInWithEmailAndPasswordFailure, bool>> signIn(
+      {required String email, required String password}) async {
     try {
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
@@ -28,11 +31,18 @@ class PasswordAuthenticationServiceImpl extends PasswordAuthenticationService {
 
       _user = userCredential.user ?? _firebaseAuth.currentUser;
 
-      return _user != null;
+      if (_user?.emailVerified == false) {
+        await _firebaseAuth.signOut();
+        return const Left(
+            LogInWithEmailAndPasswordFailure('email-not-verified'));
+      }
+
+      return Right(_user != null);
     } on FirebaseException catch (e) {
-      throw LogInWithEmailAndPasswordFailure.fromCode(e.code);
+      return Left(LogInWithEmailAndPasswordFailure.fromCode(e.code));
     } catch (e) {
-      throw const LogInWithEmailAndPasswordFailure('an unknown error occurred');
+      return const Left(
+          LogInWithEmailAndPasswordFailure('An unknown error occurred'));
     }
   }
 
