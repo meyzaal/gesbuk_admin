@@ -26,8 +26,16 @@ class AuthenticationRemoteDataSourceImpl
     required String password,
   }) async {
     try {
-      final response = await request.post(ApiEndpoint.registerAdmin,
-          requiresAuthToken: false);
+      final data = {
+        'name': name,
+        'email': email,
+        'password': password,
+      };
+      final response = await request.post(
+        ApiEndpoint.registerAdmin,
+        requiresAuthToken: false,
+        data: data,
+      );
       final result = DefaultResponse.fromJson(response.data, (json) => null);
 
       if (response.statusCode == 201) {

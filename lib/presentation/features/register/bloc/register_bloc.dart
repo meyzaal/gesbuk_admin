@@ -2,7 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../domain/use_cases/authentication_use_case.dart';
 import '../../../commons/models/models.dart';
+import '../../../configs/services/services.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
@@ -23,6 +25,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     on<VerifyPasswordChangedEvent>(_onVerifyPasswordChangedEvent);
     on<SubmitEvent>(_onSubmitEvent);
   }
+
+  final _authUseCase = serviceLocatorInstance<AuthenticationUseCase>();
 
   void _onNameChangedEvent(
     NameChangedEvent event,
@@ -59,7 +63,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     Emitter<RegisterState> emit,
   ) async {
     final password = Password.dirty(event.password);
-    final verifyPassword = VerifyPassword.pure(password.value);
+    final verifyPassword = state.verifyPassword.isPure
+        ? VerifyPassword.pure(password.value)
+        : VerifyPassword.dirty(password.value, state.verifyPassword.value);
     emit(state.copyWith(
         password: password,
         verifyPassword: verifyPassword,
@@ -91,6 +97,21 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     SubmitEvent event,
     Emitter<RegisterState> emit,
   ) async {
-    // TODO: implement event handler
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
+    final result = await _authUseCase.signUp(
+      name: state.name.value,
+      email: state.email.value,
+      password: state.password.value,
+    );
+
+    result.fold(
+        (failure) => emit(state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            errorMessage: failure.message)),
+        (_) => emit(state.copyWith(status: FormzSubmissionStatus.success)));
+
+    return emit(state.copyWith(
+        status: FormzSubmissionStatus.initial, errorMessage: ''));
   }
 }

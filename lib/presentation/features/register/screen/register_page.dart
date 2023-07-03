@@ -14,6 +14,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        
         BlocProvider(
           create: (context) => PasswordCubit(),
         ),

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import '../../../commons/helpers/helpers.dart';
+import '../../../configs/routes/routes.dart';
 import '../bloc/login_bloc.dart';
 
 class LoginSubmitButton extends StatelessWidget {
@@ -20,11 +21,12 @@ class LoginSubmitButton extends StatelessWidget {
               content: state.errorMessage, type: SnackBarType.error);
         }
 
-        if (state.status == FormzSubmissionStatus.canceled) {
-          showDialog(
-            context: context,
-            builder: (ctx) => _buildDialog(ctx, message: state.errorMessage),
-          );
+        if (state.status == FormzSubmissionStatus.success) {
+          SnackBarHelper.of(context).showSnackBar(
+              content: 'Login success', type: SnackBarType.success);
+
+          context.router
+              .pushAndPopUntil(const HomeRoute(), predicate: (route) => false);
         }
       },
       builder: (context, state) {

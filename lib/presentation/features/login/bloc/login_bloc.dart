@@ -59,13 +59,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         email: state.email.value, password: state.password.value);
 
     result.fold((failure) {
-      if (failure.message == 'email-not-verified') {
-        return emit(state.copyWith(
-            status: FormzSubmissionStatus.canceled,
-            errorMessage:
-                'Unverified email, please verify your email by clicking the verification link in your email inbox'));
-      }
-
       return emit(state.copyWith(
           status: FormzSubmissionStatus.failure,
           errorMessage: failure.message));

@@ -7,7 +7,6 @@ abstract class PasswordAuthenticationService {
   Future<Either<LogInWithEmailAndPasswordFailure, bool>> signIn(
       {required String email, required String password});
   Future<bool> signOut();
-  Future<void> sendEmailVerification();
   Future<String?> getIdToken();
   User? getUser();
 }
@@ -30,12 +29,6 @@ class PasswordAuthenticationServiceImpl extends PasswordAuthenticationService {
       }
 
       _user = userCredential.user ?? _firebaseAuth.currentUser;
-
-      if (_user?.emailVerified == false) {
-        await _firebaseAuth.signOut();
-        return const Left(
-            LogInWithEmailAndPasswordFailure('email-not-verified'));
-      }
 
       return Right(_user != null);
     } on FirebaseException catch (e) {
@@ -63,11 +56,5 @@ class PasswordAuthenticationServiceImpl extends PasswordAuthenticationService {
   @override
   User? getUser() {
     return _user ?? _firebaseAuth.currentUser;
-  }
-
-  @override
-  Future<void> sendEmailVerification() async {
-    final user = _user ?? _firebaseAuth.currentUser;
-    return await user?.sendEmailVerification();
   }
 }
