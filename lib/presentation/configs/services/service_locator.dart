@@ -19,4 +19,5 @@ Future<void> initializeServiceLocator() async {
       .registerSingleton<PackageInfoService>(PackageInfoService());
 
   await initializeAuthenticationInstance();
+  await initializeEventInstance();
 }

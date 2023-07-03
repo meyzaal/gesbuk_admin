@@ -23,9 +23,9 @@ class SplashCubit extends Cubit<SplashState> {
     const duration = Duration(seconds: 3);
 
     await Future.delayed(duration);
-    // final user =
-    //     serviceLocatorInstance<GoogleAuthenticationService>().getUser();
+    final user =
+        serviceLocatorInstance<PasswordAuthenticationService>().getUser();
 
-    return emit(state.copyWith(isUserLoggedIn: false));
+    return emit(state.copyWith(isUserLoggedIn: user != null));
   }
 }

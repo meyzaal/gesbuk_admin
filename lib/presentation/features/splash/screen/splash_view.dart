@@ -16,10 +16,10 @@ class SplashView extends StatelessWidget {
       body: BlocConsumer<SplashCubit, SplashState>(
         listener: (context, state) {
           if (state.isUserLoggedIn == true) {
-            // context.router.pushAndPopUntil(
-            //   const MainRoute(),
-            //   predicate: (_) => false,
-            // );
+            context.router.pushAndPopUntil(
+              const HomeRoute(),
+              predicate: (_) => false,
+            );
           }
 
           if (state.isUserLoggedIn == false) {
