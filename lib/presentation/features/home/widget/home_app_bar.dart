@@ -8,8 +8,10 @@ class HomeAppBar extends AppBar {
   }) : super(
           title: const Text('Dashboard'),
           actions: [
-            IconButton(
-                onPressed: onRefresh, icon: const Icon(Icons.refresh_rounded)),
+            if (onRefresh != null)
+              IconButton(
+                  onPressed: onRefresh,
+                  icon: const Icon(Icons.refresh_rounded)),
             PopupMenuButton(
               tooltip: 'Account',
               itemBuilder: (context) => <PopupMenuEntry<String>>[

@@ -10,4 +10,18 @@ class EventRepositoryImpl extends EventRepository {
   @override
   Future<Either<Failure, List<Event>>> getAllEvents() async =>
       await serviceLocatorInstance<EventRemoteDataSource>().getAllEvents();
+
+  @override
+  Future<Either<Failure, Event>> createEvent({
+    required String name,
+    required String date,
+    required String location,
+    required String type,
+  }) async =>
+      await serviceLocatorInstance<EventRemoteDataSource>().createEvent(
+        name: name,
+        date: date,
+        location: location,
+        type: type,
+      );
 }

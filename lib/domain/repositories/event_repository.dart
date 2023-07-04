@@ -5,4 +5,10 @@ import '../failures/failures.dart';
 
 abstract class EventRepository {
   Future<Either<Failure, List<Event>>> getAllEvents();
+  Future<Either<Failure, Event>> createEvent({
+    required String name,
+    required String date,
+    required String location,
+    required String type,
+  });
 }
