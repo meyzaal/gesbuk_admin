@@ -11,4 +11,5 @@ abstract class EventRepository {
     required String location,
     required String type,
   });
+  Future<Either<Failure, void>> deleteEvent(String eventId);
 }

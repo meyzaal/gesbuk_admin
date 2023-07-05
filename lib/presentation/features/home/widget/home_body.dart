@@ -14,7 +14,32 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocConsumer<HomeBloc, HomeState>(
+      listener: (context, state) {
+        if (state is HomeLoadedState) {
+          if (state.status == HomeDeleteEventStatus.loading) {
+            SnackBarHelper.of(context).showSnackBar(
+              content: 'Deleting event...',
+            );
+          }
+
+          if (state.status == HomeDeleteEventStatus.error) {
+            SnackBarHelper.of(context).showSnackBar(
+              content: state.errorMessage,
+              type: SnackBarType.error,
+            );
+          }
+
+          if (state.status == HomeDeleteEventStatus.success) {
+            SnackBarHelper.of(context).showSnackBar(
+              content: 'Delete event success',
+              type: SnackBarType.success,
+            );
+
+            context.read<HomeBloc>().add(const HomeEvent.getAllEventsEvent());
+          }
+        }
+      },
       builder: (context, state) {
         if (state is HomeLoadingState) {
           return const Center(
@@ -74,37 +99,44 @@ class HomeBody extends StatelessWidget {
   void _onCardPressed(BuildContext context, {required Event event}) {
     ShowModalBottomSheetHelper.of(context)
         .showBottomSheet<HomeActions>(
-      builder: (context) => HomeBottomSheet(event: event),
-    )
-        .then((actions) {
-      switch (actions) {
-        case HomeActions.guestList:
-          print(actions);
-          break;
-        case HomeActions.edit:
-          print(actions);
-          break;
-        case HomeActions.delete:
-          _deleteAction(context, event: event);
-          break;
-        default:
-          return null;
-      }
-    });
+            builder: (context) => HomeBottomSheet(event: event))
+        .then(
+      (actions) {
+        switch (actions) {
+          case HomeActions.guestList:
+            print(actions);
+            break;
+          case HomeActions.edit:
+            print(actions);
+            break;
+          case HomeActions.delete:
+            _deleteAction(context, event: event);
+            break;
+          default:
+            return null;
+        }
+      },
+    );
   }
 
   void _deleteAction(BuildContext context, {required Event event}) {
     showDialog<bool>(
-        context: context,
-        builder: (context) => GesbukDialog(
-              title: 'Confirmation',
-              content:
-                  'Are you sure you want to delete the ${event.name} event',
-              cancelText: 'Cancel',
-              onCancel: () => context.router.pop(false),
-              confirmText: 'Sure!',
-              onConfirm: () => context.router.pop(true),
-            )).then((value) => print(value));
+      context: context,
+      builder: (context) => GesbukDialog(
+        title: 'Confirmation',
+        content: 'Are you sure you want to delete the ${event.name} event',
+        cancelText: 'Cancel',
+        onCancel: () => context.router.pop(false),
+        confirmText: 'Sure!',
+        onConfirm: () => context.router.pop(true),
+      ),
+    ).then(
+      (delete) {
+        delete == true
+            ? context.read<HomeBloc>().add(HomeEvent.deleteEvent(event.id))
+            : null;
+      },
+    );
   }
 }
 

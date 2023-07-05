@@ -12,6 +12,7 @@ part 'home_bloc.freezed.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(const HomeState.initial()) {
     on<GetAllEventsEvent>(_onGetAllEventsEvent);
+    on<DeleteEvent>(_onDeleteEvent);
   }
 
   final eventUseCase = serviceLocatorInstance<EventUseCase>();
@@ -27,4 +28,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         (failure) => emit(HomeState.error(errorMessage: failure.message)),
         (events) => emit(HomeState.loaded(events: events)));
   }
+
+  Future<void> _onDeleteEvent(
+    DeleteEvent event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(state.copyWith(status: HomeDeleteEventStatus.loading));
+
+    final result = await eventUseCase.deleteEvent(event.eventId);
+    return result.fold(
+        (failure) => emit(state.copyWith(
+            status: HomeDeleteEventStatus.error,
+            errorMessage: failure.message)),
+        (events) =>
+            emit(state.copyWith(status: HomeDeleteEventStatus.success)));
+  }
 }
+
+enum HomeDeleteEventStatus { initial, loading, success, error }

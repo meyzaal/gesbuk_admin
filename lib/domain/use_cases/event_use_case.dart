@@ -21,4 +21,7 @@ class EventUseCase {
         location: location,
         type: type,
       );
+
+  Future<Either<Failure, void>> deleteEvent(String eventId) async =>
+      await serviceLocatorInstance<EventRepository>().deleteEvent(eventId);
 }

@@ -19,32 +19,38 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllEventsEvent,
+    required TResult Function(String eventId) deleteEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllEventsEvent,
+    TResult? Function(String eventId)? deleteEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllEventsEvent,
+    TResult Function(String eventId)? deleteEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllEventsEvent value) getAllEventsEvent,
+    required TResult Function(DeleteEvent value) deleteEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllEventsEvent value)? getAllEventsEvent,
+    TResult? Function(DeleteEvent value)? deleteEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllEventsEvent value)? getAllEventsEvent,
+    TResult Function(DeleteEvent value)? deleteEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +112,7 @@ class _$GetAllEventsEvent implements GetAllEventsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllEventsEvent,
+    required TResult Function(String eventId) deleteEvent,
   }) {
     return getAllEventsEvent();
   }
@@ -114,6 +121,7 @@ class _$GetAllEventsEvent implements GetAllEventsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllEventsEvent,
+    TResult? Function(String eventId)? deleteEvent,
   }) {
     return getAllEventsEvent?.call();
   }
@@ -122,6 +130,7 @@ class _$GetAllEventsEvent implements GetAllEventsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllEventsEvent,
+    TResult Function(String eventId)? deleteEvent,
     required TResult orElse(),
   }) {
     if (getAllEventsEvent != null) {
@@ -134,6 +143,7 @@ class _$GetAllEventsEvent implements GetAllEventsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetAllEventsEvent value) getAllEventsEvent,
+    required TResult Function(DeleteEvent value) deleteEvent,
   }) {
     return getAllEventsEvent(this);
   }
@@ -142,6 +152,7 @@ class _$GetAllEventsEvent implements GetAllEventsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetAllEventsEvent value)? getAllEventsEvent,
+    TResult? Function(DeleteEvent value)? deleteEvent,
   }) {
     return getAllEventsEvent?.call(this);
   }
@@ -150,6 +161,7 @@ class _$GetAllEventsEvent implements GetAllEventsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetAllEventsEvent value)? getAllEventsEvent,
+    TResult Function(DeleteEvent value)? deleteEvent,
     required TResult orElse(),
   }) {
     if (getAllEventsEvent != null) {
@@ -164,31 +176,189 @@ abstract class GetAllEventsEvent implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$DeleteEventCopyWith<$Res> {
+  factory _$$DeleteEventCopyWith(
+          _$DeleteEvent value, $Res Function(_$DeleteEvent) then) =
+      __$$DeleteEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String eventId});
+}
+
+/// @nodoc
+class __$$DeleteEventCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$DeleteEvent>
+    implements _$$DeleteEventCopyWith<$Res> {
+  __$$DeleteEventCopyWithImpl(
+      _$DeleteEvent _value, $Res Function(_$DeleteEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? eventId = null,
+  }) {
+    return _then(_$DeleteEvent(
+      null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteEvent implements DeleteEvent {
+  const _$DeleteEvent(this.eventId);
+
+  @override
+  final String eventId;
+
+  @override
+  String toString() {
+    return 'HomeEvent.deleteEvent(eventId: $eventId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteEvent &&
+            (identical(other.eventId, eventId) || other.eventId == eventId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, eventId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteEventCopyWith<_$DeleteEvent> get copyWith =>
+      __$$DeleteEventCopyWithImpl<_$DeleteEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllEventsEvent,
+    required TResult Function(String eventId) deleteEvent,
+  }) {
+    return deleteEvent(eventId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllEventsEvent,
+    TResult? Function(String eventId)? deleteEvent,
+  }) {
+    return deleteEvent?.call(eventId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllEventsEvent,
+    TResult Function(String eventId)? deleteEvent,
+    required TResult orElse(),
+  }) {
+    if (deleteEvent != null) {
+      return deleteEvent(eventId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAllEventsEvent value) getAllEventsEvent,
+    required TResult Function(DeleteEvent value) deleteEvent,
+  }) {
+    return deleteEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAllEventsEvent value)? getAllEventsEvent,
+    TResult? Function(DeleteEvent value)? deleteEvent,
+  }) {
+    return deleteEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAllEventsEvent value)? getAllEventsEvent,
+    TResult Function(DeleteEvent value)? deleteEvent,
+    required TResult orElse(),
+  }) {
+    if (deleteEvent != null) {
+      return deleteEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteEvent implements HomeEvent {
+  const factory DeleteEvent(final String eventId) = _$DeleteEvent;
+
+  String get eventId;
+  @JsonKey(ignore: true)
+  _$$DeleteEventCopyWith<_$DeleteEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HomeState {
   List<Event> get events => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  HomeDeleteEventStatus get status => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -228,7 +398,8 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events, String errorMessage, HomeDeleteEventStatus status});
 }
 
 /// @nodoc
@@ -246,6 +417,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       events: null == events
@@ -256,6 +428,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as HomeDeleteEventStatus,
     ) as $Val);
   }
 }
@@ -268,7 +444,8 @@ abstract class _$$HomeInitialStateCopyWith<$Res>
       __$$HomeInitialStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events, String errorMessage, HomeDeleteEventStatus status});
 }
 
 /// @nodoc
@@ -284,6 +461,7 @@ class __$$HomeInitialStateCopyWithImpl<$Res>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? status = null,
   }) {
     return _then(_$HomeInitialState(
       events: null == events
@@ -294,6 +472,10 @@ class __$$HomeInitialStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as HomeDeleteEventStatus,
     ));
   }
 }
@@ -302,7 +484,9 @@ class __$$HomeInitialStateCopyWithImpl<$Res>
 
 class _$HomeInitialState implements HomeInitialState {
   const _$HomeInitialState(
-      {final List<Event> events = const [], this.errorMessage = ''})
+      {final List<Event> events = const [],
+      this.errorMessage = '',
+      this.status = HomeDeleteEventStatus.initial})
       : _events = events;
 
   final List<Event> _events;
@@ -317,10 +501,13 @@ class _$HomeInitialState implements HomeInitialState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final HomeDeleteEventStatus status;
 
   @override
   String toString() {
-    return 'HomeState.initial(events: $events, errorMessage: $errorMessage)';
+    return 'HomeState.initial(events: $events, errorMessage: $errorMessage, status: $status)';
   }
 
   @override
@@ -330,12 +517,13 @@ class _$HomeInitialState implements HomeInitialState {
             other is _$HomeInitialState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_events), errorMessage);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_events), errorMessage, status);
 
   @JsonKey(ignore: true)
   @override
@@ -346,36 +534,60 @@ class _$HomeInitialState implements HomeInitialState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loaded,
   }) {
-    return initial(events, errorMessage);
+    return initial(events, errorMessage, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
   }) {
-    return initial?.call(events, errorMessage);
+    return initial?.call(events, errorMessage, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(events, errorMessage);
+      return initial(events, errorMessage, status);
     }
     return orElse();
   }
@@ -421,12 +633,15 @@ class _$HomeInitialState implements HomeInitialState {
 abstract class HomeInitialState implements HomeState {
   const factory HomeInitialState(
       {final List<Event> events,
-      final String errorMessage}) = _$HomeInitialState;
+      final String errorMessage,
+      final HomeDeleteEventStatus status}) = _$HomeInitialState;
 
   @override
   List<Event> get events;
   @override
   String get errorMessage;
+  @override
+  HomeDeleteEventStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$HomeInitialStateCopyWith<_$HomeInitialState> get copyWith =>
@@ -441,7 +656,8 @@ abstract class _$$HomeLoadingStateCopyWith<$Res>
       __$$HomeLoadingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events, String errorMessage, HomeDeleteEventStatus status});
 }
 
 /// @nodoc
@@ -457,6 +673,7 @@ class __$$HomeLoadingStateCopyWithImpl<$Res>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? status = null,
   }) {
     return _then(_$HomeLoadingState(
       events: null == events
@@ -467,6 +684,10 @@ class __$$HomeLoadingStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as HomeDeleteEventStatus,
     ));
   }
 }
@@ -475,7 +696,9 @@ class __$$HomeLoadingStateCopyWithImpl<$Res>
 
 class _$HomeLoadingState implements HomeLoadingState {
   const _$HomeLoadingState(
-      {final List<Event> events = const [], this.errorMessage = ''})
+      {final List<Event> events = const [],
+      this.errorMessage = '',
+      this.status = HomeDeleteEventStatus.initial})
       : _events = events;
 
   final List<Event> _events;
@@ -490,10 +713,13 @@ class _$HomeLoadingState implements HomeLoadingState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final HomeDeleteEventStatus status;
 
   @override
   String toString() {
-    return 'HomeState.loading(events: $events, errorMessage: $errorMessage)';
+    return 'HomeState.loading(events: $events, errorMessage: $errorMessage, status: $status)';
   }
 
   @override
@@ -503,12 +729,13 @@ class _$HomeLoadingState implements HomeLoadingState {
             other is _$HomeLoadingState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_events), errorMessage);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_events), errorMessage, status);
 
   @JsonKey(ignore: true)
   @override
@@ -519,36 +746,60 @@ class _$HomeLoadingState implements HomeLoadingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loaded,
   }) {
-    return loading(events, errorMessage);
+    return loading(events, errorMessage, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
   }) {
-    return loading?.call(events, errorMessage);
+    return loading?.call(events, errorMessage, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(events, errorMessage);
+      return loading(events, errorMessage, status);
     }
     return orElse();
   }
@@ -594,12 +845,15 @@ class _$HomeLoadingState implements HomeLoadingState {
 abstract class HomeLoadingState implements HomeState {
   const factory HomeLoadingState(
       {final List<Event> events,
-      final String errorMessage}) = _$HomeLoadingState;
+      final String errorMessage,
+      final HomeDeleteEventStatus status}) = _$HomeLoadingState;
 
   @override
   List<Event> get events;
   @override
   String get errorMessage;
+  @override
+  HomeDeleteEventStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$HomeLoadingStateCopyWith<_$HomeLoadingState> get copyWith =>
@@ -614,7 +868,8 @@ abstract class _$$HomeErrorStateCopyWith<$Res>
       __$$HomeErrorStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events, String errorMessage, HomeDeleteEventStatus status});
 }
 
 /// @nodoc
@@ -630,6 +885,7 @@ class __$$HomeErrorStateCopyWithImpl<$Res>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? status = null,
   }) {
     return _then(_$HomeErrorState(
       events: null == events
@@ -640,6 +896,10 @@ class __$$HomeErrorStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as HomeDeleteEventStatus,
     ));
   }
 }
@@ -648,7 +908,9 @@ class __$$HomeErrorStateCopyWithImpl<$Res>
 
 class _$HomeErrorState implements HomeErrorState {
   const _$HomeErrorState(
-      {final List<Event> events = const [], this.errorMessage = ''})
+      {final List<Event> events = const [],
+      this.errorMessage = '',
+      this.status = HomeDeleteEventStatus.initial})
       : _events = events;
 
   final List<Event> _events;
@@ -663,10 +925,13 @@ class _$HomeErrorState implements HomeErrorState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final HomeDeleteEventStatus status;
 
   @override
   String toString() {
-    return 'HomeState.error(events: $events, errorMessage: $errorMessage)';
+    return 'HomeState.error(events: $events, errorMessage: $errorMessage, status: $status)';
   }
 
   @override
@@ -676,12 +941,13 @@ class _$HomeErrorState implements HomeErrorState {
             other is _$HomeErrorState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_events), errorMessage);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_events), errorMessage, status);
 
   @JsonKey(ignore: true)
   @override
@@ -692,36 +958,60 @@ class _$HomeErrorState implements HomeErrorState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loaded,
   }) {
-    return error(events, errorMessage);
+    return error(events, errorMessage, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
   }) {
-    return error?.call(events, errorMessage);
+    return error?.call(events, errorMessage, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(events, errorMessage);
+      return error(events, errorMessage, status);
     }
     return orElse();
   }
@@ -766,12 +1056,16 @@ class _$HomeErrorState implements HomeErrorState {
 
 abstract class HomeErrorState implements HomeState {
   const factory HomeErrorState(
-      {final List<Event> events, final String errorMessage}) = _$HomeErrorState;
+      {final List<Event> events,
+      final String errorMessage,
+      final HomeDeleteEventStatus status}) = _$HomeErrorState;
 
   @override
   List<Event> get events;
   @override
   String get errorMessage;
+  @override
+  HomeDeleteEventStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$HomeErrorStateCopyWith<_$HomeErrorState> get copyWith =>
@@ -786,7 +1080,8 @@ abstract class _$$HomeLoadedStateCopyWith<$Res>
       __$$HomeLoadedStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events, String errorMessage, HomeDeleteEventStatus status});
 }
 
 /// @nodoc
@@ -802,6 +1097,7 @@ class __$$HomeLoadedStateCopyWithImpl<$Res>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? status = null,
   }) {
     return _then(_$HomeLoadedState(
       events: null == events
@@ -812,6 +1108,10 @@ class __$$HomeLoadedStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as HomeDeleteEventStatus,
     ));
   }
 }
@@ -820,7 +1120,9 @@ class __$$HomeLoadedStateCopyWithImpl<$Res>
 
 class _$HomeLoadedState implements HomeLoadedState {
   const _$HomeLoadedState(
-      {final List<Event> events = const [], this.errorMessage = ''})
+      {final List<Event> events = const [],
+      this.errorMessage = '',
+      this.status = HomeDeleteEventStatus.initial})
       : _events = events;
 
   final List<Event> _events;
@@ -835,10 +1137,13 @@ class _$HomeLoadedState implements HomeLoadedState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final HomeDeleteEventStatus status;
 
   @override
   String toString() {
-    return 'HomeState.loaded(events: $events, errorMessage: $errorMessage)';
+    return 'HomeState.loaded(events: $events, errorMessage: $errorMessage, status: $status)';
   }
 
   @override
@@ -848,12 +1153,13 @@ class _$HomeLoadedState implements HomeLoadedState {
             other is _$HomeLoadedState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_events), errorMessage);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_events), errorMessage, status);
 
   @JsonKey(ignore: true)
   @override
@@ -864,36 +1170,60 @@ class _$HomeLoadedState implements HomeLoadedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)
+        loaded,
   }) {
-    return loaded(events, errorMessage);
+    return loaded(events, errorMessage, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
   }) {
-    return loaded?.call(events, errorMessage);
+    return loaded?.call(events, errorMessage, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage,
+            HomeDeleteEventStatus status)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(events, errorMessage);
+      return loaded(events, errorMessage, status);
     }
     return orElse();
   }
@@ -939,12 +1269,15 @@ class _$HomeLoadedState implements HomeLoadedState {
 abstract class HomeLoadedState implements HomeState {
   const factory HomeLoadedState(
       {final List<Event> events,
-      final String errorMessage}) = _$HomeLoadedState;
+      final String errorMessage,
+      final HomeDeleteEventStatus status}) = _$HomeLoadedState;
 
   @override
   List<Event> get events;
   @override
   String get errorMessage;
+  @override
+  HomeDeleteEventStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$HomeLoadedStateCopyWith<_$HomeLoadedState> get copyWith =>

@@ -24,4 +24,9 @@ class EventRepositoryImpl extends EventRepository {
         location: location,
         type: type,
       );
+
+  @override
+  Future<Either<Failure, void>> deleteEvent(String eventId) async =>
+      await serviceLocatorInstance<EventRemoteDataSource>()
+          .deleteEvent(eventId);
 }

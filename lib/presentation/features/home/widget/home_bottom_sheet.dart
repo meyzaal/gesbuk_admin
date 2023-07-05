@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../data/models/event/event_model.dart';
+import '../../../commons/helpers/helpers.dart';
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
 import 'home_body.dart';
@@ -70,9 +72,14 @@ class HomeBottomSheet extends StatelessWidget {
             title: 'Event key',
             content: Row(
               children: [
-                Flexible(fit: FlexFit.loose, child: Text(event.key)),
+                Flexible(fit: FlexFit.loose, child: SelectableText(event.key)),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.router.pop();
+                      Clipboard.setData(ClipboardData(text: event.key)).then(
+                          (value) => SnackBarHelper.of(context).showSnackBar(
+                              content: 'Successfully copied the text'));
+                    },
                     icon: const Icon(
                       Icons.copy,
                       size: 16.0,

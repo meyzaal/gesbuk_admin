@@ -86,8 +86,9 @@ class CreateEventBloc extends Bloc<CreateEventEvent, CreateEventState> {
     TypeChangedEvent event,
     Emitter<CreateEventState> emit,
   ) {
-    // event.type.toLowerCase()
-    final type = EventType.dirty(event.type.toLowerCase());
+    String typeStr = event.type.toLowerCase();
+    typeStr == 'n/a' ? typeStr = 'event' : null;
+    final type = EventType.dirty(typeStr);
     emit(state.copyWith(
         type: type,
         isValid: Formz.validate([

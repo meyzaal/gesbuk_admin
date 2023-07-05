@@ -16,6 +16,7 @@ abstract class EventRemoteDataSource {
     required String location,
     required String type,
   });
+  Future<Either<Failure, void>> deleteEvent(String eventId);
 }
 
 class EventRemoteDataSourceImpl extends EventRemoteDataSource {
@@ -26,7 +27,6 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
     try {
       final response =
           await request.get(ApiEndpoint.allEvent, requiresAuthToken: true);
-
       final result =
           DefaultResponse<List<Event>>.fromJson(response.data, (json) {
         if (json == null) return [];
@@ -65,14 +65,32 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
         'startDate': date,
         'eventType': type
       };
-
       final response = await request.post(ApiEndpoint.event,
           requiresAuthToken: true, data: data);
-
       final result = DefaultResponse<Event>.fromJson(
           response.data, (json) => Event.fromJson(json as JSON));
 
       if (response.statusCode == 201) return Right(result.data);
+      return Left(ConnectionFailure(result.message));
+    } on DioException catch (dioException) {
+      if (dioException.type == DioExceptionType.connectionTimeout) {
+        return const Left(ConnectionFailure('Connection timeout'));
+      }
+      return const Left(ConnectionFailure('A connection error occurred'));
+    } catch (e) {
+      return const Left(ParsingFailure('Unable to parse response'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteEvent(String eventId) async {
+    try {
+      String endpoint = '${ApiEndpoint.event}/$eventId';
+      final response = await request.delete(endpoint, requiresAuthToken: true);
+      final result = DefaultResponse.fromJson(response.data, (json) => null);
+
+      if (response.statusCode == 200) return const Right(null);
+
       return Left(ConnectionFailure(result.message));
     } on DioException catch (dioException) {
       if (dioException.type == DioExceptionType.connectionTimeout) {
