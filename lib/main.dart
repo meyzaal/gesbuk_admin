@@ -21,7 +21,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Gesbuk',
+      title: 'Gesbuk Admin',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.of(context),
       localizationsDelegates: const [

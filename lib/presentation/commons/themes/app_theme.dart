@@ -7,6 +7,7 @@ mixin AppTheme implements ThemeData {
     final theme = Theme.of(context);
 
     return theme.copyWith(
+      useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryBlue),
       primaryColor: AppColor.primaryBlue,
       scaffoldBackgroundColor: AppColor.backgroundLight,

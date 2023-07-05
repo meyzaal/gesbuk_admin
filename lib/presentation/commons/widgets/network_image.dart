@@ -5,10 +5,12 @@ import '../themes/themes.dart';
 
 class GesbukNetworkImage extends StatelessWidget {
   final String imageUrl;
+  final Widget? errorWidget;
 
   const GesbukNetworkImage({
     super.key,
     required this.imageUrl,
+    this.errorWidget,
   });
 
   @override
@@ -23,11 +25,13 @@ class GesbukNetworkImage extends StatelessWidget {
               value: progress.downloaded / 100),
         ),
       ),
-      errorWidget: (_, __, ___) => const Center(
-          child: Icon(
-        Icons.image,
-        color: AppColor.lightGray,
-      )),
+      errorWidget: (_, __, ___) =>
+          errorWidget ??
+          const Center(
+              child: Icon(
+            Icons.image,
+            color: AppColor.lightGray,
+          )),
     );
   }
 }

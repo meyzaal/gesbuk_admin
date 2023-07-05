@@ -33,6 +33,7 @@ dependencies:
   package_info_plus: ^4.0.2
   rxdart: ^0.27.7
   shared_preferences: ^2.1.2
+  transparent_image: ^2.0.1
 
 dev_dependencies:
   flutter_test:

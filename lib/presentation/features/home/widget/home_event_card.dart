@@ -43,18 +43,10 @@ class HomeEventCard extends StatelessWidget {
             children: [
               ListTile(
                 visualDensity: VisualDensity.compact,
-                leading: Container(
-                    padding: const EdgeInsets.all(4.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.0),
-                        color: enrollColor),
-                    child: Text(
-                      enrollText,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall
-                          ?.copyWith(color: AppColor.white),
-                    )),
+                leading: StatusChip(
+                  backgroundColor: enrollColor,
+                  label: enrollText,
+                ),
                 trailing: const Icon(Icons.chevron_right_rounded),
               ),
               ListTile(
