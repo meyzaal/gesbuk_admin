@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.router.push(
           CreateEventRoute(
-            onUpdate: (updated) => updated
+            onEventCreated: (created) => created
                 ? context
                     .read<HomeBloc>()
                     .add(const HomeEvent.getAllEventsEvent())

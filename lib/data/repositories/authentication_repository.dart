@@ -7,12 +7,18 @@ import '../../domain/repositories/authentication_repository.dart';
 import '../remote_data_sources/authentication_remote_data_source.dart';
 
 class AuthenticationRepositoryImpl extends AuthenticationRepository {
+  final _authenticationRDS =
+      serviceLocatorInstance<AuthenticationRemoteDataSource>();
+
   @override
   Future<Either<Failure, void>> signUp({
     required String name,
     required String email,
     required String password,
   }) async =>
-      await serviceLocatorInstance<AuthenticationRemoteDataSource>()
-          .signUp(name: name, email: email, password: password);
+      await _authenticationRDS.signUp(
+        name: name,
+        email: email,
+        password: password,
+      );
 }

@@ -11,5 +11,6 @@ class CreateEventState with _$CreateEventState {
     required EventType type,
     required TextEditingController dateController,
     @Default('') String errorMessage,
+    @Default(Event()) Event event,
   }) = _Initial;
 }

@@ -13,6 +13,9 @@ DefaultResponse<T> _$DefaultResponseFromJson<T>(
     DefaultResponse<T>(
       message: json['message'] as String,
       data: fromJsonT(json['data']),
+      currentPage: json['currentPage'] as int?,
+      totalResults: json['totalResults'] as int?,
+      totalPages: json['totalPages'] as int?,
     );
 
 Map<String, dynamic> _$DefaultResponseToJson<T>(
@@ -22,4 +25,7 @@ Map<String, dynamic> _$DefaultResponseToJson<T>(
     <String, dynamic>{
       'message': instance.message,
       'data': toJsonT(instance.data),
+      'currentPage': instance.currentPage,
+      'totalResults': instance.totalResults,
+      'totalPages': instance.totalPages,
     };

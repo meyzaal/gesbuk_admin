@@ -16,4 +16,6 @@ class ApiEndpoint {
 
   // Guest
   static String get guest => '/guest';
+  static String get guestFromEvent => '$guest/from-event';
+  static String get importGuest => '$guest/import-guest';
 }

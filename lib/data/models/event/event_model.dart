@@ -3,6 +3,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../gesbuk_user/gesbuk_user_model.dart';
+import '../report_event/report_event_model.dart';
 
 part 'event_model.freezed.dart';
 part 'event_model.g.dart';
@@ -20,6 +21,7 @@ class Event with _$Event {
     @Default('-') String eventType,
     @Default(0) int guestCount,
     @Default(GesbukUser()) GesbukUser user,
+    @Default(ReportEvent()) ReportEvent eventReport,
   }) = _Event;
 
   factory Event.fromJson(Map<String, Object?> json) => _$EventFromJson(json);

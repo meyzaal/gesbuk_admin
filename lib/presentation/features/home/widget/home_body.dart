@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/models/event/event_model.dart';
 import '../../../commons/helpers/helpers.dart';
 import '../../../commons/widgets/widgets.dart';
+import '../../../configs/routes/routes.dart';
 import '../bloc/home_bloc.dart';
 import 'home_bottom_sheet.dart';
 import 'home_event_card.dart';
@@ -104,7 +105,13 @@ class HomeBody extends StatelessWidget {
       (actions) {
         switch (actions) {
           case HomeActions.guestList:
-            print(actions);
+            context.router.push(GuestListRoute(
+                eventId: event.id,
+                onGuestUpdated: (updated) => updated
+                    ? context
+                        .read<HomeBloc>()
+                        .add(const HomeEvent.getAllEventsEvent())
+                    : null));
             break;
           case HomeActions.edit:
             print(actions);

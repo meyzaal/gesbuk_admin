@@ -830,6 +830,7 @@ mixin _$CreateEventState {
   TextEditingController get dateController =>
       throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  Event get event => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -840,7 +841,8 @@ mixin _$CreateEventState {
             EventLocation location,
             EventType type,
             TextEditingController dateController,
-            String errorMessage)
+            String errorMessage,
+            Event event)
         initial,
   }) =>
       throw _privateConstructorUsedError;
@@ -854,7 +856,8 @@ mixin _$CreateEventState {
             EventLocation location,
             EventType type,
             TextEditingController dateController,
-            String errorMessage)?
+            String errorMessage,
+            Event event)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
@@ -868,7 +871,8 @@ mixin _$CreateEventState {
             EventLocation location,
             EventType type,
             TextEditingController dateController,
-            String errorMessage)?
+            String errorMessage,
+            Event event)?
         initial,
     required TResult orElse(),
   }) =>
@@ -909,7 +913,10 @@ abstract class $CreateEventStateCopyWith<$Res> {
       EventLocation location,
       EventType type,
       TextEditingController dateController,
-      String errorMessage});
+      String errorMessage,
+      Event event});
+
+  $EventCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -933,6 +940,7 @@ class _$CreateEventStateCopyWithImpl<$Res, $Val extends CreateEventState>
     Object? type = null,
     Object? dateController = null,
     Object? errorMessage = null,
+    Object? event = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -967,7 +975,19 @@ class _$CreateEventStateCopyWithImpl<$Res, $Val extends CreateEventState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EventCopyWith<$Res> get event {
+    return $EventCopyWith<$Res>(_value.event, (value) {
+      return _then(_value.copyWith(event: value) as $Val);
+    });
   }
 }
 
@@ -987,7 +1007,11 @@ abstract class _$$_InitialCopyWith<$Res>
       EventLocation location,
       EventType type,
       TextEditingController dateController,
-      String errorMessage});
+      String errorMessage,
+      Event event});
+
+  @override
+  $EventCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -1008,6 +1032,7 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? type = null,
     Object? dateController = null,
     Object? errorMessage = null,
+    Object? event = null,
   }) {
     return _then(_$_Initial(
       status: null == status
@@ -1042,6 +1067,10 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
     ));
   }
 }
@@ -1057,7 +1086,8 @@ class _$_Initial implements _Initial {
       required this.location,
       required this.type,
       required this.dateController,
-      this.errorMessage = ''});
+      this.errorMessage = '',
+      this.event = const Event()});
 
   @override
   final FormzSubmissionStatus status;
@@ -1077,10 +1107,13 @@ class _$_Initial implements _Initial {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final Event event;
 
   @override
   String toString() {
-    return 'CreateEventState.initial(status: $status, isValid: $isValid, name: $name, date: $date, location: $location, type: $type, dateController: $dateController, errorMessage: $errorMessage)';
+    return 'CreateEventState.initial(status: $status, isValid: $isValid, name: $name, date: $date, location: $location, type: $type, dateController: $dateController, errorMessage: $errorMessage, event: $event)';
   }
 
   @override
@@ -1098,12 +1131,13 @@ class _$_Initial implements _Initial {
             (identical(other.dateController, dateController) ||
                 other.dateController == dateController) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, status, isValid, name, date,
-      location, type, dateController, errorMessage);
+      location, type, dateController, errorMessage, event);
 
   @JsonKey(ignore: true)
   @override
@@ -1122,11 +1156,12 @@ class _$_Initial implements _Initial {
             EventLocation location,
             EventType type,
             TextEditingController dateController,
-            String errorMessage)
+            String errorMessage,
+            Event event)
         initial,
   }) {
     return initial(status, isValid, name, date, location, type, dateController,
-        errorMessage);
+        errorMessage, event);
   }
 
   @override
@@ -1140,11 +1175,12 @@ class _$_Initial implements _Initial {
             EventLocation location,
             EventType type,
             TextEditingController dateController,
-            String errorMessage)?
+            String errorMessage,
+            Event event)?
         initial,
   }) {
     return initial?.call(status, isValid, name, date, location, type,
-        dateController, errorMessage);
+        dateController, errorMessage, event);
   }
 
   @override
@@ -1158,13 +1194,14 @@ class _$_Initial implements _Initial {
             EventLocation location,
             EventType type,
             TextEditingController dateController,
-            String errorMessage)?
+            String errorMessage,
+            Event event)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
       return initial(status, isValid, name, date, location, type,
-          dateController, errorMessage);
+          dateController, errorMessage, event);
     }
     return orElse();
   }
@@ -1207,7 +1244,8 @@ abstract class _Initial implements CreateEventState {
       required final EventLocation location,
       required final EventType type,
       required final TextEditingController dateController,
-      final String errorMessage}) = _$_Initial;
+      final String errorMessage,
+      final Event event}) = _$_Initial;
 
   @override
   FormzSubmissionStatus get status;
@@ -1225,6 +1263,8 @@ abstract class _Initial implements CreateEventState {
   TextEditingController get dateController;
   @override
   String get errorMessage;
+  @override
+  Event get event;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

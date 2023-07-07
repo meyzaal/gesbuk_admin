@@ -1,3 +1,4 @@
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -20,13 +21,13 @@ abstract class EventRemoteDataSource {
 }
 
 class EventRemoteDataSourceImpl extends EventRemoteDataSource {
-  final request = serviceLocatorInstance<Request>();
+  final _request = serviceLocatorInstance<Request>();
 
   @override
   Future<Either<Failure, List<Event>>> getAllEvents() async {
     try {
       final response =
-          await request.get(ApiEndpoint.allEvent, requiresAuthToken: true);
+          await _request.get(ApiEndpoint.allEvent, requiresAuthToken: true);
       final result =
           DefaultResponse<List<Event>>.fromJson(response.data, (json) {
         if (json == null) return [];
@@ -65,7 +66,7 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
         'startDate': date,
         'eventType': type
       };
-      final response = await request.post(ApiEndpoint.event,
+      final response = await _request.post(ApiEndpoint.event,
           requiresAuthToken: true, data: data);
       final result = DefaultResponse<Event>.fromJson(
           response.data, (json) => Event.fromJson(json as JSON));
@@ -86,7 +87,7 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
   Future<Either<Failure, void>> deleteEvent(String eventId) async {
     try {
       String endpoint = '${ApiEndpoint.event}/$eventId';
-      final response = await request.delete(endpoint, requiresAuthToken: true);
+      final response = await _request.delete(endpoint, requiresAuthToken: true);
       final result = DefaultResponse.fromJson(response.data, (json) => null);
 
       if (response.statusCode == 200) return const Right(null);

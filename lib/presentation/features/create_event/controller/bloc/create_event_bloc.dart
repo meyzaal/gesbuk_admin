@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../data/models/event/event_model.dart';
 import '../../../../../domain/use_cases/event_use_case.dart';
 import '../../../../commons/helpers/helpers.dart';
 import '../../../../configs/services/services.dart';
@@ -13,9 +14,9 @@ part 'create_event_state.dart';
 part 'create_event_bloc.freezed.dart';
 
 class CreateEventBloc extends Bloc<CreateEventEvent, CreateEventState> {
-  final ValueChanged<bool> onUpdate;
+  final ValueChanged<bool> onEventCreated;
 
-  CreateEventBloc(this.onUpdate)
+  CreateEventBloc(this.onEventCreated)
       : super(CreateEventState.initial(
             status: FormzSubmissionStatus.initial,
             name: const EventName.pure(),
@@ -116,8 +117,8 @@ class CreateEventBloc extends Bloc<CreateEventEvent, CreateEventState> {
         (failure) => emit(state.copyWith(
             status: FormzSubmissionStatus.failure,
             errorMessage: failure.message)), (event) {
-      onUpdate(true);
-      emit(state.copyWith(status: FormzSubmissionStatus.success));
+      onEventCreated(true);
+      emit(state.copyWith(status: FormzSubmissionStatus.success, event: event));
     });
 
     emit(state.copyWith(

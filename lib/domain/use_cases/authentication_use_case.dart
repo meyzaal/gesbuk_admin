@@ -5,11 +5,14 @@ import '../failures/failures.dart';
 import '../repositories/authentication_repository.dart';
 
 class AuthenticationUseCase {
+  final _authenticationRepo =
+      serviceLocatorInstance<AuthenticationRepository>();
+
   Future<Either<Failure, void>> signUp({
     required String name,
     required String email,
     required String password,
   }) async =>
-      await serviceLocatorInstance<AuthenticationRepository>()
-          .signUp(name: name, email: email, password: password);
+      await _authenticationRepo.signUp(
+          name: name, email: email, password: password);
 }

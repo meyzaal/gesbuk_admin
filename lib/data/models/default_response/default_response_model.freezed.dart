@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DefaultResponse<T> {
   String get message => throw _privateConstructorUsedError;
   T get data => throw _privateConstructorUsedError;
+  int? get currentPage => throw _privateConstructorUsedError;
+  int? get totalResults => throw _privateConstructorUsedError;
+  int? get totalPages => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DefaultResponseCopyWith<T, DefaultResponse<T>> get copyWith =>
@@ -30,7 +33,12 @@ abstract class $DefaultResponseCopyWith<T, $Res> {
           DefaultResponse<T> value, $Res Function(DefaultResponse<T>) then) =
       _$DefaultResponseCopyWithImpl<T, $Res, DefaultResponse<T>>;
   @useResult
-  $Res call({String message, T data});
+  $Res call(
+      {String message,
+      T data,
+      int? currentPage,
+      int? totalResults,
+      int? totalPages});
 }
 
 /// @nodoc
@@ -48,6 +56,9 @@ class _$DefaultResponseCopyWithImpl<T, $Res, $Val extends DefaultResponse<T>>
   $Res call({
     Object? message = null,
     Object? data = freezed,
+    Object? currentPage = freezed,
+    Object? totalResults = freezed,
+    Object? totalPages = freezed,
   }) {
     return _then(_value.copyWith(
       message: null == message
@@ -58,6 +69,18 @@ class _$DefaultResponseCopyWithImpl<T, $Res, $Val extends DefaultResponse<T>>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as T,
+      currentPage: freezed == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalResults: freezed == totalResults
+          ? _value.totalResults
+          : totalResults // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalPages: freezed == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -70,7 +93,12 @@ abstract class _$$_DefaultResponseCopyWith<T, $Res>
       __$$_DefaultResponseCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String message, T data});
+  $Res call(
+      {String message,
+      T data,
+      int? currentPage,
+      int? totalResults,
+      int? totalPages});
 }
 
 /// @nodoc
@@ -86,6 +114,9 @@ class __$$_DefaultResponseCopyWithImpl<T, $Res>
   $Res call({
     Object? message = null,
     Object? data = freezed,
+    Object? currentPage = freezed,
+    Object? totalResults = freezed,
+    Object? totalPages = freezed,
   }) {
     return _then(_$_DefaultResponse<T>(
       message: null == message
@@ -96,6 +127,18 @@ class __$$_DefaultResponseCopyWithImpl<T, $Res>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as T,
+      currentPage: freezed == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalResults: freezed == totalResults
+          ? _value.totalResults
+          : totalResults // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalPages: freezed == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -103,17 +146,28 @@ class __$$_DefaultResponseCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$_DefaultResponse<T> implements _DefaultResponse<T> {
-  const _$_DefaultResponse({this.message = '', required this.data});
+  const _$_DefaultResponse(
+      {this.message = '',
+      required this.data,
+      this.currentPage,
+      this.totalResults,
+      this.totalPages});
 
   @override
   @JsonKey()
   final String message;
   @override
   final T data;
+  @override
+  final int? currentPage;
+  @override
+  final int? totalResults;
+  @override
+  final int? totalPages;
 
   @override
   String toString() {
-    return 'DefaultResponse<$T>(message: $message, data: $data)';
+    return 'DefaultResponse<$T>(message: $message, data: $data, currentPage: $currentPage, totalResults: $totalResults, totalPages: $totalPages)';
   }
 
   @override
@@ -122,12 +176,23 @@ class _$_DefaultResponse<T> implements _DefaultResponse<T> {
         (other.runtimeType == runtimeType &&
             other is _$_DefaultResponse<T> &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other.data, data) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.totalResults, totalResults) ||
+                other.totalResults == totalResults) &&
+            (identical(other.totalPages, totalPages) ||
+                other.totalPages == totalPages));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(data));
+      runtimeType,
+      message,
+      const DeepCollectionEquality().hash(data),
+      currentPage,
+      totalResults,
+      totalPages);
 
   @JsonKey(ignore: true)
   @override
@@ -139,12 +204,22 @@ class _$_DefaultResponse<T> implements _DefaultResponse<T> {
 
 abstract class _DefaultResponse<T> implements DefaultResponse<T> {
   const factory _DefaultResponse(
-      {final String message, required final T data}) = _$_DefaultResponse<T>;
+      {final String message,
+      required final T data,
+      final int? currentPage,
+      final int? totalResults,
+      final int? totalPages}) = _$_DefaultResponse<T>;
 
   @override
   String get message;
   @override
   T get data;
+  @override
+  int? get currentPage;
+  @override
+  int? get totalResults;
+  @override
+  int? get totalPages;
   @override
   @JsonKey(ignore: true)
   _$$_DefaultResponseCopyWith<T, _$_DefaultResponse<T>> get copyWith =>

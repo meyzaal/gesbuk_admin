@@ -20,4 +20,5 @@ Future<void> initializeServiceLocator() async {
 
   await initializeAuthenticationInstance();
   await initializeEventInstance();
+  await initializeGuestInstance();
 }

@@ -6,6 +6,8 @@ import '../failures/failures.dart';
 import '../repositories/event_repository.dart';
 
 class EventUseCase {
+  final _eventRepo = serviceLocatorInstance<EventRepository>();
+
   Future<Either<Failure, List<Event>>> getAllEvents() async =>
       await serviceLocatorInstance<EventRepository>().getAllEvents();
 
@@ -15,7 +17,7 @@ class EventUseCase {
     required String location,
     required String type,
   }) async =>
-      await serviceLocatorInstance<EventRepository>().createEvent(
+      await _eventRepo.createEvent(
         name: name,
         date: date,
         location: location,
@@ -23,5 +25,5 @@ class EventUseCase {
       );
 
   Future<Either<Failure, void>> deleteEvent(String eventId) async =>
-      await serviceLocatorInstance<EventRepository>().deleteEvent(eventId);
+      await _eventRepo.deleteEvent(eventId);
 }

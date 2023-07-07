@@ -9,6 +9,9 @@ class DefaultResponse<T> with _$DefaultResponse<T> {
   const factory DefaultResponse({
     @Default('') String message,
     required T data,
+    int? currentPage,
+    int? totalResults,
+    int? totalPages,
   }) = _DefaultResponse<T>;
 
   factory DefaultResponse.fromJson(

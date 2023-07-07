@@ -8,9 +8,9 @@ import 'create_event_view.dart';
 
 @RoutePage(name: 'CreateEventRoute')
 class CreateEventPage extends StatelessWidget {
-  final ValueChanged<bool> onUpdate;
+  final ValueChanged<bool> onEventCreated;
 
-  const CreateEventPage({super.key, required this.onUpdate});
+  const CreateEventPage({super.key, required this.onEventCreated});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CreateEventPage extends StatelessWidget {
           create: (context) => EventTypeCubit(),
         ),
         BlocProvider(
-          create: (context) => CreateEventBloc(onUpdate),
+          create: (context) => CreateEventBloc(onEventCreated),
         ),
       ],
       child: const CreateEventView(),

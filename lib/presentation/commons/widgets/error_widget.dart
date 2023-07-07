@@ -43,7 +43,7 @@ class GesbukErrorWidget extends StatelessWidget {
                   Icons.refresh_rounded,
                   size: 18.0,
                 ),
-                label: const Text('Muat ulang')),
+                label: const Text('Refresh')),
           )
         ],
       ),

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:gesbuk_admin/data/models/default_response/default_response_model.dart';
 
 import '../../domain/failures/failures.dart';
 import '../../domain/providers/network_request.dart';
 import '../../presentation/configs/services/services.dart';
+import '../models/default_response/default_response_model.dart';
 import '../utils/api_endpoint.dart';
 
 abstract class AuthenticationRemoteDataSource {
@@ -17,7 +17,7 @@ abstract class AuthenticationRemoteDataSource {
 
 class AuthenticationRemoteDataSourceImpl
     extends AuthenticationRemoteDataSource {
-  final request = serviceLocatorInstance<Request>();
+  final _request = serviceLocatorInstance<Request>();
 
   @override
   Future<Either<Failure, void>> signUp({
@@ -31,7 +31,7 @@ class AuthenticationRemoteDataSourceImpl
         'email': email,
         'password': password,
       };
-      final response = await request.post(
+      final response = await _request.post(
         ApiEndpoint.registerAdmin,
         requiresAuthToken: false,
         data: data,

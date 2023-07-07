@@ -1,6 +1,7 @@
 export 'dialog.dart';
 export 'dropdown_button.dart';
 export 'error_widget.dart';
+export 'guest_card.dart';
 export 'network_image.dart';
 export 'section.dart';
 export 'snack_bar.dart';
