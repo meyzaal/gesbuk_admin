@@ -11,11 +11,11 @@ mixin AppTheme implements ThemeData {
       colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryBlue),
       // primaryColor: AppColor.primaryBlue,
       // scaffoldBackgroundColor: AppColor.backgroundLight,
-      appBarTheme: const AppBarTheme(
-          elevation: 1.0,
+      // appBarTheme: const AppBarTheme(
+      //     elevation: 1.0,
           // backgroundColor: AppColor.backgroundLight,
-          shadowColor: Colors.black38,
-          foregroundColor: Colors.black),
+          // shadowColor: Colors.black38,
+          // foregroundColor: Colors.black),
       // dialogBackgroundColor: AppColor.backgroundLight,
       textTheme: theme.textTheme.apply(fontFamily: 'Nunito'),
       // elevatedButtonTheme: ElevatedButtonThemeData(
